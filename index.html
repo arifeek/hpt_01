@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holistic Pulse Therapy | Equine Wellness</title>
+    <meta name="description" content="Professional PEMF therapy for horses. Non-invasive electromagnetic field therapy to support recovery, reduce inflammation, and improve equine wellness. Mobile service available.">
+    <meta property="og:title" content="Holistic Pulse Therapy | Equine PEMF Wellness">
+    <meta property="og:description" content="Professional PEMF therapy for horses. Non-invasive treatment for recovery, pain relief, and performance.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/steph_stand.jpg">
+    <title>Holistic Pulse Therapy | Equine PEMF Wellness</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* --- CSS Variables & Global Reset --- */
         :root {
-            /* Colors defined from the image analysis */
             --brand-yellow: #F7E900;
             --brand-blue-light: #B3E0F3;
             --brand-blue-dark: #2c5a70; 
-            
-            /* Neutral Colors */
             --text-dark: #222222;
             --text-light: #ffffff;
             --bg-light-gray: #f9f9f9;
@@ -47,6 +50,22 @@
             color: inherit;
         }
 
+        /* Skip to content for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--brand-yellow);
+            color: var(--text-dark);
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
         .container {
             width: 90%;
             max-width: 1200px;
@@ -65,6 +84,11 @@
             cursor: pointer;
             text-align: center;
             border: none;
+        }
+
+        .btn:focus {
+            outline: 3px solid var(--brand-blue-dark);
+            outline-offset: 2px;
         }
 
         .btn-yellow {
@@ -107,9 +131,12 @@
         }
 
         .logo span {
-            color: var(--brand-blue-light);
-            /* Outline the light text slightly for contrast if needed, or use darker blue */
-            text-shadow: 0px 0px 1px #888; 
+            color: var(--brand-blue-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
         }
 
         .nav-links a {
@@ -124,14 +151,32 @@
             color: var(--brand-blue-dark);
         }
 
+        .nav-links a:focus {
+            outline: 2px solid var(--brand-blue-dark);
+            outline-offset: 4px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            padding: 5px;
+        }
+
+        .mobile-menu-toggle:focus {
+            outline: 2px solid var(--brand-blue-dark);
+        }
+
         /* --- Hero Section --- */
         #hero {
-            height: 100vh;
-            /* Using neck.jpg as it provides a nice landscape "action" shot */
+            min-height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('images/neck.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             display: flex;
             align-items: center;
             color: var(--text-light);
@@ -172,12 +217,16 @@
             align-items: center;
         }
 
-        /* Using steph_stand.jpg for the personal connection */
+        .about-image {
+            position: relative;
+        }
+
         .about-image img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            loading: lazy;
         }
 
         .about-text h2 {
@@ -203,7 +252,7 @@
 
         /* --- Benefits Section --- */
         #benefits {
-            background-color: var(--brand-blue-light); /* From logo circle */
+            background-color: var(--brand-blue-light);
             text-align: center;
         }
 
@@ -239,7 +288,7 @@
 
         .benefit-icon {
             font-size: 3rem;
-            color: var(--brand-yellow); /* From equipment case */
+            color: var(--brand-yellow);
             margin-bottom: 20px;
         }
 
@@ -264,7 +313,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 8px;
-            height: 350px; /* Uniform height */
+            height: 350px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
@@ -274,6 +323,7 @@
             object-fit: cover;
             object-position: center;
             transition: transform 0.5s ease;
+            loading: lazy;
         }
         
         .gallery-item:hover img {
@@ -293,7 +343,6 @@
             transition: transform 0.3s ease;
         }
         
-        /* Make overlay visible on hover or always slightly visible on mobile */
         .gallery-item:hover .gallery-overlay {
             transform: translateY(0);
         }
@@ -301,6 +350,43 @@
         .gallery-overlay h4 {
             color: var(--brand-yellow);
             margin-bottom: 5px;
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            padding: 30px;
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--brand-yellow);
+            margin-bottom: 15px;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .contact-item a {
+            color: var(--brand-blue-dark);
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
         }
 
         /* --- CTA Footer --- */
@@ -313,7 +399,6 @@
             overflow: hidden;
         }
         
-        /* Using head_back.jpg as a subtle dark background */
         #contact-cta::before {
             content: '';
             position: absolute;
@@ -345,6 +430,73 @@
             font-size: 0.8rem;
         }
 
+        footer a {
+            color: #999;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: var(--brand-yellow);
+        }
+
+        /* Animation classes */
+        .fade-in { 
+            opacity: 0; 
+            transition: opacity 0.8s ease-out;
+        }
+        
+        .fade-in.visible { 
+            opacity: 1; 
+        }
+
+        .fade-in-up { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: all 0.8s ease-out;
+            will-change: transform, opacity;
+        }
+        
+        .fade-in-up.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        .slide-in-left { 
+            opacity: 0; 
+            transform: translateX(-40px); 
+            transition: all 0.8s ease-out;
+            will-change: transform, opacity;
+        }
+        
+        .slide-in-left.visible { 
+            opacity: 1; 
+            transform: translateX(0); 
+        }
+
+        .slide-in-right { 
+            opacity: 0; 
+            transform: translateX(40px); 
+            transition: all 0.8s ease-out;
+            will-change: transform, opacity;
+        }
+        
+        .slide-in-right.visible { 
+            opacity: 1; 
+            transform: translateX(0); 
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
         /* --- Responsive adjustments --- */
         @media (max-width: 768px) {
             .hero-content h1 {
@@ -356,7 +508,10 @@
                 position: relative;
             }
             
-            /* Add scroll hint after about image on mobile */
+            .about-image {
+                position: relative;
+            }
+            
             .about-image::after {
                 content: '⌄';
                 position: absolute;
@@ -364,16 +519,53 @@
                 left: 50%;
                 transform: translateX(-50%);
                 font-size: 2rem;
-                color: var(--brand-blue-light);
+                color: var(--brand-blue-dark);
                 animation: bounce 2s infinite;
             }
             
             .nav-links {
-                display: none; /* Mobile Menu would go here */
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #fff;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                margin: 15px 0;
+                font-size: 1.2rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
             }
             
             .logo {
                 font-size: 1.2rem;
+            }
+
+            .gallery-overlay {
+                transform: translateY(0);
+                padding: 15px;
+                padding-top: 40px;
+            }
+
+            #contact-cta h2 {
+                font-size: 2rem;
+            }
+
+            #hero {
+                background-attachment: scroll;
             }
         }
 
@@ -390,169 +582,238 @@
             }
         }
 
-        .fade-in { opacity: 0; transition: opacity 0.8s ease-out; }
-        .fade-in.visible { opacity: 1; }
+        /* Loading placeholder for images */
+        .about-image img,
+        .gallery-item img {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
 
-        .fade-in-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
 
-        .slide-in-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s ease-out; }
-        .slide-in-left.visible { opacity: 1; transform: translateX(0); }
-
-        .slide-in-right { opacity: 0; transform: translateX(40px); transition: all 0.8s ease-out; }
-        .slide-in-right.visible { opacity: 1; transform: translateX(0); }
+        .about-image img[src],
+        .gallery-item img[src] {
+            animation: none;
+            background: none;
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header>
+    <header role="banner">
         <div class="container">
-            <nav>
+            <nav role="navigation" aria-label="Main navigation">
                 <div class="logo">Holistic<span>Pulse</span> Therapy</div>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <div class="nav-links">
                     <a href="#hero">Home</a>
                     <a href="#about">About</a>
                     <a href="#benefits">Benefits</a>
                     <a href="#process">Gallery</a>
-                    <a href="https://www.instagram.com/holistic_pulse_therapy?igsh=a3hrMjdpMjNib3Fs" target="_blank" class="btn btn-yellow" style="padding: 8px 20px; margin-left: 20px;">Follow Our Journey</a>
+                    <a href="#contact">Contact</a>
+                    <a href="https://www.instagram.com/holistic_pulse_therapy?igsh=a3hrMjdpMjNib3Fs" target="_blank" rel="noopener noreferrer" class="btn btn-yellow" style="padding: 8px 20px; margin-left: 20px;">Follow Our Journey</a>
                 </div>
             </nav>
         </div>
     </header>
 
-    <section id="hero">
+    <main id="main-content">
+        <section id="hero" role="banner">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>Energize Your Horse's <span class="highlight-yellow">Performance.</span></h1>
+                    <p>Non-invasive PEMF therapy to support recovery, reduce inflammation, and improve overall equine well-being.</p>
+                    <a href="#contact" class="btn btn-yellow">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image slide-in-left">
+                        <img src="images/steph_stand.jpg" alt="Professional equine therapist with horse demonstrating PEMF therapy equipment" loading="lazy">
+                    </div>
+                    <div class="about-text slide-in-right">
+                        <h2>Targeted Care for Equine Athletes</h2>
+                        <p>We utilize advanced Pulsed Electromagnetic Field (PEMF) technology. This non-invasive modality generates a soothing electromagnetic field that penetrates deep into tissues.</p>
+                        <p>Whether your horse is recovering from injury, needs maintenance for competition, or requires relief from chronic soreness, our targeted approach helps the body's natural recovery processes.</p>
+                        <p><strong>Professional equipment. Personal care. Proven results.</strong></p>
+                        <a href="#process" class="btn btn-yellow" style="background-color: var(--brand-blue-light); color: var(--text-dark);">See Treatments</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="section-padding">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Why Choose PEMF?</h2>
+                    <p>Pulsed Electromagnetic Field therapy is scientifically backed to improve cellular function.</p>
+                </div>
+                <div class="benefits-grid">
+                    <article class="benefit-card fade-in-up">
+                        <div class="benefit-icon" aria-hidden="true"><i class="fas fa-bolt"></i></div>
+                        <h3>Accelerate Recovery</h3>
+                        <p>Reduces recovery time after intense training or injury by promoting cellular repair and oxygenation.</p>
+                    </article>
+                    <article class="benefit-card fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="benefit-icon" aria-hidden="true"><i class="fas fa-snowflake"></i></div>
+                        <h3>Reduce Inflammation</h3>
+                        <p>Helps manage chronic inflammation and alleviates symptoms associated with arthritis and soreness.</p>
+                    </article>
+                    <article class="benefit-card fade-in-up" style="transition-delay: 0.2s;">
+                        <div class="benefit-icon" aria-hidden="true"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h3>Relieve Pain</h3>
+                        <p>A drug-free alternative to help manage generalized pain and stiffness in the neck, back, and joints.</p>
+                    </article>
+                    <article class="benefit-card fade-in-up" style="transition-delay: 0.3s;">
+                        <div class="benefit-icon" aria-hidden="true"><i class="fas fa-spa"></i></div>
+                        <h3>Calm & Relax</h3>
+                        <p>Stimulates the parasympathetic nervous system, helping anxious horses relax before or after work.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="section-padding">
+            <div class="container">
+                <div class="section-header fade-in" style="text-align: center; margin-bottom: 40px;">
+                    <h2>Treatment in Action</h2>
+                    <p>We treat the whole horse, from ears to hooves.</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <article class="gallery-item fade-in">
+                        <img src="images/wither.jpg" alt="PEMF therapy being applied to horse's withers and topline" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Topline & Wither</h4>
+                            <p>Relieving saddle pressure points.</p>
+                        </div>
+                    </article>
+
+                    <article class="gallery-item fade-in">
+                        <img src="images/knee.jpg" alt="PEMF therapy targeting horse's knee joint and tendons" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Joint Mobility</h4>
+                            <p>Targeting knees and tendons.</p>
+                        </div>
+                    </article>
+
+                    <article class="gallery-item fade-in">
+                        <img src="images/rump.jpg" alt="PEMF therapy on horse's hindquarters and propulsion muscles" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Hindquarters</h4>
+                            <p>Power and propulsion muscles.</p>
+                        </div>
+                    </article>
+
+                    <article class="gallery-item fade-in">
+                        <img src="images/ankle.jpg" alt="PEMF therapy improving circulation in horse's hoof and lower leg" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Hoof Health</h4>
+                            <p>Improving circulation in the foot.</p>
+                        </div>
+                    </article>
+
+                    <article class="gallery-item fade-in">
+                        <img src="images/head.jpg" alt="PEMF therapy releasing tension in horse's poll and TMJ area" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Poll & TMJ</h4>
+                            <p>Releasing tension in the head.</p>
+                        </div>
+                    </article>
+
+                    <article class="gallery-item fade-in">
+                        <img src="images/steph_crouch.jpg" alt="Mobile PEMF therapy equipment and professional therapist" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Mobile Service</h4>
+                            <p>We come to you with the best gear.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Get In Touch</h2>
+                    <p>Ready to help your horse feel their best? Contact us to schedule a session.</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item fade-in-up">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <a href="mailto:info@holisticpulsetherapy.com">info@holisticpulsetherapy.com</a>
+                    </div>
+                    <div class="contact-item fade-in-up" style="transition-delay: 0.1s;">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <a href="tel:+1234567890">Call or Text: (123) 456-7890</a>
+                    </div>
+                    <div class="contact-item fade-in-up" style="transition-delay: 0.2s;">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram</h3>
+                        <a href="https://www.instagram.com/holistic_pulse_therapy?igsh=a3hrMjdpMjNib3Fs" target="_blank" rel="noopener noreferrer">@holistic_pulse_therapy</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-cta">
+            <div class="container cta-content fade-in-up">
+                <h2>Ready to <span class="highlight-yellow">Energize</span> Your Horse?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Book a session today and see the difference PEMF therapy can make.</p>
+                <a href="#contact" class="btn btn-yellow" style="font-size: 1.1rem; padding: 15px 40px;">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
         <div class="container">
-            <div class="hero-content fade-in">
-                <h1>Energize Your Horse's <span class="highlight-yellow">Performance.</span></h1>
-                <p>Non-invasive PEMF therapy to support recovery, reduce inflammation, and improve overall equine well-being.</p>
-                <a href="https://www.instagram.com/holistic_pulse_therapy?igsh=a3hrMjdpMjNib3Fs" target="_blank" class="btn btn-yellow">Follow Our Journey</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section-padding">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image slide-in-left">
-                    <img src="images/steph_stand.jpg" alt="Steph and Horse - Holistic Pulse Therapy">
-                </div>
-                <div class="about-text slide-in-right">
-                    <h2>Targeted Care for Equine Athletes</h2>
-                    <p>We utilize advanced Pulsed Electromagnetic Field (PEMF) technology. This non-invasive modality generates a soothing electromagnetic field that penetrates deep into tissues.</p>
-                    <p>Whether your horse is recovering from injury, needs maintenance for competition, or requires relief from chronic soreness, our targeted approach helps the body's natural recovery processes.</p>
-                    <p><strong>Professional equipment. Personal care. Proven results.</strong></p>
-                    <a href="#process" class="btn btn-yellow" style="background-color: var(--brand-blue-light); color: var(--text-dark);">See Treatments</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="benefits" class="section-padding">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Why Choose PEMF?</h2>
-                <p>Pulsed Electromagnetic Field therapy is scientifically backed to improve cellular function.</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card fade-in-up">
-                    <div class="benefit-icon">⚡</div>
-                    <h3>Accelerate Recovery</h3>
-                    <p>Reduces recovery time after intense training or injury by promoting cellular repair and oxygenation.</p>
-                </div>
-                <div class="benefit-card fade-in-up" style="transition-delay: 0.1s;">
-                    <div class="benefit-icon">🧊</div>
-                    <h3>Reduce Inflammation</h3>
-                    <p>Helps manage chronic inflammation and alleviates symptoms associated with arthritis and soreness.</p>
-                </div>
-                <div class="benefit-card fade-in-up" style="transition-delay: 0.2s;">
-                    <div class="benefit-icon">💆‍♀️</div>
-                    <h3>Relieve Pain</h3>
-                    <p>A drug-free alternative to help manage generalized pain and stiffness in the neck, back, and joints.</p>
-                </div>
-                <div class="benefit-card fade-in-up" style="transition-delay: 0.3s;">
-                    <div class="benefit-icon">🧘‍♂️</div>
-                    <h3>Calm & Relax</h3>
-                    <p>Stimulates the parasympathetic nervous system, helping anxious horses relax before or after work.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="process" class="section-padding">
-        <div class="container">
-            <div class="section-header fade-in" style="text-align: center; margin-bottom: 40px;">
-                <h2>Treatment in Action</h2>
-                <p>We treat the whole horse, from ears to hooves.</p>
-            </div>
-            
-            <div class="gallery-grid">
-                <div class="gallery-item fade-in">
-                    <img src="images/wither.jpg" alt="Treating the withers">
-                    <div class="gallery-overlay">
-                        <h4>Topline & Wither</h4>
-                        <p>Relieving saddle pressure points.</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <img src="images/knee.jpg" alt="Treating the knee">
-                    <div class="gallery-overlay">
-                        <h4>Joint Mobility</h4>
-                        <p>Targeting knees and tendons.</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <img src="images/rump.jpg" alt="Treating the hindquarters">
-                    <div class="gallery-overlay">
-                        <h4>Hindquarters</h4>
-                        <p>Power and propulsion muscles.</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item fade-in">
-                    <img src="images/ankle.jpg" alt="Treating the hoof">
-                    <div class="gallery-overlay">
-                        <h4>Hoof Health</h4>
-                        <p>Improving circulation in the foot.</p>
-                    </div>
-                </div>
-
-                 <div class="gallery-item fade-in">
-                    <img src="images/head.jpg" alt="Treating the head">
-                    <div class="gallery-overlay">
-                        <h4>Poll & TMJ</h4>
-                        <p>Releasing tension in the head.</p>
-                    </div>
-                </div>
-
-                 <div class="gallery-item fade-in">
-                    <img src="images/steph_crouch.jpg" alt="Steph with Equipment">
-                    <div class="gallery-overlay">
-                        <h4>Mobile Service</h4>
-                        <p>We come to you with the best gear.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact-cta">
-        <div class="container cta-content fade-in-up">
-            <h2>Ready to <span class="highlight-yellow">Energize</span> Your Horse?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Visit our Instagram to see more.</p>
-            <a href="https://www.instagram.com/holistic_pulse_therapy?igsh=a3hrMjdpMjNib3Fs" target="_blank" class="btn btn-yellow" style="font-size: 1.1rem; padding: 15px 40px;">Follow Our Journey</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2023-2025 Holistic Pulse Therapy. All rights reserved.</p>
+            <p>&copy; <span id="currentYear">2025</span> Holistic Pulse Therapy. All rights reserved.</p>
+            <p>
+                <a href="#privacy">Privacy Policy</a> | 
+                <a href="#terms">Terms of Service</a>
+            </p>
         </div>
     </footer>
 
-
     <script>
+        // Auto-update copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            this.setAttribute('aria-expanded', isExpanded);
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+                mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Intersection Observer for animations
         document.addEventListener("DOMContentLoaded", function() {
             const animatedElements = document.querySelectorAll('.fade-in, .fade-in-up, .slide-in-left, .slide-in-right');
 
@@ -575,7 +836,14 @@
                 observer.observe(element);
             });
         });
-    </script>
 
+        // Image loading - remove loading animation when image loads
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.animation = 'none';
+                this.style.background = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
