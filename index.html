@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holistic Pulse Therapy | Equine Wellness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables & Global Reset --- */
+        :root {
+            /* Colors defined from the image analysis */
+            --brand-yellow: #F7E900;
+            --brand-blue-light: #B3E0F3;
+            --brand-blue-dark: #2c5a70; 
+            
+            /* Neutral Colors */
+            --text-dark: #222222;
+            --text-light: #ffffff;
+            --bg-light-gray: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+        }
+
+        .btn-yellow {
+            background-color: var(--brand-yellow);
+            color: var(--text-dark);
+        }
+
+        .btn-yellow:hover {
+            background-color: #dcd000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(247, 233, 0, 0.4);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            top: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--brand-blue-light);
+            /* Outline the light text slightly for contrast if needed, or use darker blue */
+            text-shadow: 0px 0px 1px #888; 
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .nav-links a:hover {
+            color: var(--brand-blue-dark);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            height: 100vh;
+            /* Using neck.jpg as it provides a nice landscape "action" shot */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('images/neck.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            margin-top: 0; 
+        }
+
+        .hero-content {
+            max-width: 700px;
+            padding-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .highlight-yellow {
+            color: var(--brand-yellow);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* --- About Section --- */
+        #about {
+            background-color: #fff;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* Using steph_stand.jpg for the personal connection */
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--brand-blue-light);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* --- Benefits Section --- */
+        #benefits {
+            background-color: var(--brand-blue-light); /* From logo circle */
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            color: #444;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--brand-yellow); /* From equipment case */
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        /* --- Gallery / Process Section --- */
+        #process {
+            background-color: var(--bg-light-gray);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 350px; /* Uniform height */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: #fff;
+            padding: 20px;
+            padding-top: 60px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Make overlay visible on hover or always slightly visible on mobile */
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h4 {
+            color: var(--brand-yellow);
+            margin-bottom: 5px;
+        }
+
+        /* --- CTA Footer --- */
+        #contact-cta {
+            background-color: #222;
+            color: var(--text-light);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Using head_back.jpg as a subtle dark background */
+        #contact-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/head_back.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        #contact-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background: #111;
+            color: #666;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8rem;
+        }
+
+        /* --- Responsive adjustments --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none; /* Mobile Menu would go here */
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Holistic<span>Pulse</span> Therapy</div>
+                <div class="nav-links">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="#process">Gallery</a>
+                    <a href="https://www.instagram.com/holistic_pulse_therapy?igsh=a3hrMjdpMjNib3Fs" target="_blank" class="btn btn-yellow" style="padding: 8px 20px; margin-left: 20px;">Book on Instagram</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Energize Your Horse's <span class="highlight-yellow">Performance.</span></h1>
+                <p>Non-invasive PEMF therapy to support recovery, reduce inflammation, and improve overall equine well-being.</p>
+                <a href="https://www.instagram.com/holistic_pulse_therapy?igsh=a3hrMjdpMjNib3Fs" target="_blank" class="btn btn-yellow">Book Your Session</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image slide-in-left">
+                    <img src="images/steph_stand.jpg" alt="Steph and Horse - Holistic Pulse Therapy">
+                </div>
+                <div class="about-text slide-in-right">
+                    <h2>Targeted Care for Equine Athletes</h2>
+                    <p>We utilize advanced Pulsed Electromagnetic Field (PEMF) technology. This non-invasive modality generates a soothing electromagnetic field that penetrates deep into tissues.</p>
+                    <p>Whether your horse is recovering from injury, needs maintenance for competition, or requires relief from chronic soreness, our targeted approach helps the body's natural recovery processes.</p>
+                    <p><strong>Professional equipment. Personal care. Proven results.</strong></p>
+                    <a href="#process" class="btn btn-yellow" style="background-color: var(--brand-blue-light); color: var(--text-dark);">See Treatments</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="section-padding">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Why Choose PEMF?</h2>
+                <p>Pulsed Electromagnetic Field therapy is scientifically backed to improve cellular function.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in-up">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Accelerate Recovery</h3>
+                    <p>Reduces recovery time after intense training or injury by promoting cellular repair and oxygenation.</p>
+                </div>
+                <div class="benefit-card fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="benefit-icon">🧊</div>
+                    <h3>Reduce Inflammation</h3>
+                    <p>Helps manage chronic inflammation and alleviates symptoms associated with arthritis and soreness.</p>
+                </div>
+                <div class="benefit-card fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="benefit-icon">💆‍♀️</div>
+                    <h3>Relieve Pain</h3>
+                    <p>A drug-free alternative to help manage generalized pain and stiffness in the neck, back, and joints.</p>
+                </div>
+                <div class="benefit-card fade-in-up" style="transition-delay: 0.3s;">
+                    <div class="benefit-icon">🧘‍♂️</div>
+                    <h3>Calm & Relax</h3>
+                    <p>Stimulates the parasympathetic nervous system, helping anxious horses relax before or after work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section-padding">
+        <div class="container">
+            <div class="section-header fade-in" style="text-align: center; margin-bottom: 40px;">
+                <h2>Treatment in Action</h2>
+                <p>We treat the whole horse, from ears to hooves.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="images/wither.jpg" alt="Treating the withers">
+                    <div class="gallery-overlay">
+                        <h4>Topline & Wither</h4>
+                        <p>Relieving saddle pressure points.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="images/knee.jpg" alt="Treating the knee">
+                    <div class="gallery-overlay">
+                        <h4>Joint Mobility</h4>
+                        <p>Targeting knees and tendons.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="images/rump.jpg" alt="Treating the hindquarters">
+                    <div class="gallery-overlay">
+                        <h4>Hindquarters</h4>
+                        <p>Power and propulsion muscles.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <img src="images/ankle.jpg" alt="Treating the hoof">
+                    <div class="gallery-overlay">
+                        <h4>Hoof Health</h4>
+                        <p>Improving circulation in the foot.</p>
+                    </div>
+                </div>
+
+                 <div class="gallery-item fade-in">
+                    <img src="images/head.jpg" alt="Treating the head">
+                    <div class="gallery-overlay">
+                        <h4>Poll & TMJ</h4>
+                        <p>Releasing tension in the head.</p>
+                    </div>
+                </div>
+
+                 <div class="gallery-item fade-in">
+                    <img src="images/steph_crouch.jpg" alt="Steph with Equipment">
+                    <div class="gallery-overlay">
+                        <h4>Mobile Service</h4>
+                        <p>We come to you with the best gear.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-cta">
+        <div class="container cta-content fade-in-up">
+            <h2>Ready to <span class="highlight-yellow">Energize</span> Your Horse?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Visit our Instagram to see more results and book a session.</p>
+            <a href="https://www.instagram.com/holistic_pulse_therapy?igsh=a3hrMjdpMjNib3Fs" target="_blank" class="btn btn-yellow" style="font-size: 1.1rem; padding: 15px 40px;">Book on Instagram</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023-2025 Holistic Pulse Therapy. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-up, .slide-in-left, .slide-in-right');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+
+    <style>
+        .fade-in { opacity: 0; transition: opacity 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; }
+
+        .fade-in-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+        .slide-in-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s ease-out; }
+        .slide-in-left.visible { opacity: 1; transform: translateX(0); }
+
+        .slide-in-right { opacity: 0; transform: translateX(40px); transition: all 0.8s ease-out; }
+        .slide-in-right.visible { opacity: 1; transform: translateX(0); }
+    </style>
+
+</body>
+</html>
