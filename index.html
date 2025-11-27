@@ -181,6 +181,7 @@
             align-items: center;
             color: var(--text-light);
             margin-top: 0; 
+            position: relative; /* FIX 1: Added position relative for the scroll hint */
         }
 
         .hero-content {
@@ -226,7 +227,7 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            loading: lazy;
+            /* loading: lazy; <- REMOVED THIS INVALID CSS IN PREVIOUS STEP */
         }
 
         .about-text h2 {
@@ -323,7 +324,7 @@
             object-fit: cover;
             object-position: center;
             transition: transform 0.5s ease;
-            loading: lazy;
+            /* loading: lazy; <- REMOVED THIS INVALID CSS IN PREVIOUS STEP */
         }
         
         .gallery-item:hover img {
@@ -499,6 +500,21 @@
 
         /* --- Responsive adjustments --- */
         @media (max-width: 768px) {
+            
+            /* FIX 2: NEW: Scroll down hint for Hero section */
+            #hero::after {
+                content: '⌄';
+                position: absolute;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 2.5rem;
+                color: var(--text-light); 
+                animation: bounce 2s infinite;
+                text-shadow: 0 0 10px rgba(0,0,0,0.8);
+                z-index: 1; 
+            }
+            
             .hero-content h1 {
                 font-size: 2.5rem;
             }
@@ -516,16 +532,7 @@
                 position: relative;
             }
             
-            .about-text::after {
-                content: '⌄';
-                position: absolute;
-                bottom: -40px;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 2rem;
-                color: var(--brand-blue-dark);
-                animation: bounce 2s infinite;
-            }
+            /* FIX 2: REMOVED the redundant .about-text::after block that caused issues */
             
             .nav-links {
                 position: fixed;
